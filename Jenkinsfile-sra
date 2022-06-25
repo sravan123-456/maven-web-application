@@ -4,8 +4,13 @@ pipeline {
         maven 'maven3.8.3'
     }
     options{
-        timestamps()
-        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5'))])    
+    timestamps()
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5'))])    
+    }
+
+
+    triggers{
+        pollSCM('* * * * *')
     }
     stages{
         stage('git checkout'){
