@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    parameters {
+        choice(name: 'BranchName', choices:['development','stage','qa','master'])
+        string(name: 'PersonName', choices:['sravan', 'sandeep','harish'])
+    }
     tools{
         maven 'maven3.8.3'
     }
@@ -13,7 +17,7 @@ pipeline {
     stages{
         stage('git checkout'){
             steps{
-                git credentialsId: 'github-auth', url: 'https://github.com/sravan123-456/maven-web-application.git'
+                git branch: "${params.BranchName}", credentialsId: 'github-auth', url: 'https://github.com/sravan123-456/maven-web-application.git'
             }
             
         }
