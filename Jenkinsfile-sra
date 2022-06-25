@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         choice(name: 'BranchName', choices:['development','stage','qa','master'])
-        string(name: 'PersonName', values:['sravan', 'sandeep','harish'])
+        string(name: 'PersonName', defaultValue:'sravan')
     }
     tools{
         maven 'maven3.8.3'
