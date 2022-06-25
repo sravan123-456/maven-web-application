@@ -5,6 +5,7 @@ pipeline {
     }
     options{
         timestamps()
+        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
     }
     stages{
         stage('git checkout'){
