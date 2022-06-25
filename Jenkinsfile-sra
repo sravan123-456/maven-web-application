@@ -4,7 +4,7 @@ pipeline {
         maven 'maven3.8.3'
     }
     options{
-        timestamps{}
+        timestamps()
     }
     stages{
         stage('git checkout'){
